@@ -9,14 +9,18 @@
 </head>
 <body class="bg-[#313338] text-gray-100 font-sans min-h-screen flex flex-col justify-between">
 
-    <header class="bg-[#2b2d31] border-b border-[#1f2023] px-6 py-4 flex justify-between items-center shadow-md">
+    <!-- Barra de Navegación -->
+    <header class="bg-[#2b2d31] border-b border-[#1f2023] px-6 py-4 flex justify-between items-center shadow-md sticky top-0 z-50">
         <div class="flex items-center space-x-3">
             <div class="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center font-bold text-xl shadow">
                 K
             </div>
             <span class="text-xl font-bold tracking-wide text-white">Kuroya Bot</span>
         </div>
-        <nav>
+        <nav class="flex items-center space-x-6">
+            <a href="#features" class="hover:text-indigo-400 font-medium text-sm transition hidden sm:inline">Características</a>
+            <a href="#commands" class="hover:text-indigo-400 font-medium text-sm transition hidden sm:inline">Comandos</a>
+            <a href="#faq" class="hover:text-indigo-400 font-medium text-sm transition hidden sm:inline">FAQ</a>
             <a href="https://discord.com/oauth2/authorize?client_id=1531521187447050240&permissions=8&integration_type=0&scope=bot" target="_blank" 
                class="bg-[#5865F2] hover:bg-[#4752C4] text-white px-4 py-2 rounded-lg font-medium text-sm transition duration-200 flex items-center gap-2">
                 <i class="fa-brands fa-discord"></i> Invitar Bot
@@ -24,18 +28,19 @@
         </nav>
     </header>
 
-    <main class="flex-grow flex items-center justify-center p-4">
+    <!-- Contenido Principal -->
+    <main class="flex-grow flex flex-col items-center justify-center px-4 py-12 max-w-5xl mx-auto w-full">
 
-        <section class="w-full max-w-xl text-center">
-            
-            <h1 class="text-3xl font-extrabold mb-2 text-white">¡Hola, aventurero! 👋</h1>
-            <p class="text-gray-400 mb-8">Bienvenido al sistema global de economía, minería, pesca y crafteos.</p>
+        <!-- SECCIÓN DE INICIO (Invitación de Discord) -->
+        <section class="w-full max-w-xl text-center mb-16">
+            <h1 class="text-3xl sm:text-4xl font-extrabold mb-2 text-white">¡Hola, aventurero! 👋</h1>
+            <p class="text-gray-400 mb-8 text-base sm:text-lg">Bienvenido al sistema global de economía, minería, pesca y crafteos.</p>
 
             <div class="bg-[#2b2d31] border border-[#1f2023] rounded-2xl p-6 shadow-2xl text-left relative overflow-hidden mb-8">
                 <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">INVITACIÓN AL BOT DE DISCORD</p>
                 
                 <div class="flex items-center space-x-4 mb-6">
-                    <img src="https://i.imgur.com/uK0g6DX.jpeg" alt="Kuroya Avatar" class="w-20 h-20 rounded-2xl object-cover shadow-md border-2 border-indigo-500">
+                    <img src="https://i.imgur.com/uK0g6DX.jpeg" alt="Kuroya Avatar" class="w-20 h-20 rounded-2xl object-cover shadow-md border-2 border-indigo-500 flex-shrink-0">
                     <div>
                         <h2 class="text-2xl font-bold text-white flex items-center gap-2">
                             Kuroya <span class="bg-indigo-600 text-xs px-2 py-0.5 rounded-full text-white font-normal">BOT OFICIAL</span>
@@ -46,7 +51,7 @@
                     </div>
                 </div>
 
-                <div class="flex space-x-6 text-sm text-gray-400 border-t border-[#3f4147] pt-4 mb-6">
+                <div class="flex flex-wrap gap-4 text-sm text-gray-400 border-t border-[#3f4147] pt-4 mb-6">
                     <div class="flex items-center gap-2">
                         <span class="w-2 h-2 rounded-full bg-green-500"></span> Economía Global Activa
                     </div>
@@ -62,10 +67,124 @@
             </div>
         </section>
 
+        <!-- SECCIÓN 1: CARACTERÍSTICAS PRINCIPALES -->
+        <section id="features" class="w-full mb-16">
+            <h2 class="text-2xl font-bold text-center mb-8 text-white">✨ Características Principales</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                
+                <div class="bg-[#2b2d31] border border-[#1f2023] p-5 rounded-xl shadow">
+                    <div class="text-indigo-400 text-2xl mb-2">⛏️🐟</div>
+                    <h3 class="font-bold text-white mb-1">Minería y Pesca</h3>
+                    <p class="text-xs text-gray-400">Explora 5 zonas diferentes para recolectar materiales raros y peces exóticos.</p>
+                </div>
+
+                <div class="bg-[#2b2d31] border border-[#1f2023] p-5 rounded-xl shadow">
+                    <div class="text-indigo-400 text-2xl mb-2">🔨</div>
+                    <h3 class="font-bold text-white mb-1">Crafteo</h3>
+                    <p class="text-xs text-gray-400">Forja y mejora tus herramientas (picos y cañas) para conseguir recompensas superiores.</p>
+                </div>
+
+                <div class="bg-[#2b2d31] border border-[#1f2023] p-5 rounded-xl shadow">
+                    <div class="text-indigo-400 text-2xl mb-2">🐾</div>
+                    <h3 class="font-bold text-white mb-1">Mascotas</h3>
+                    <p class="text-xs text-gray-400">Adopta, cuida y acompaña tu aventura con un sistema dinámico de mascotas.</p>
+                </div>
+
+                <div class="bg-[#2b2d31] border border-[#1f2023] p-5 rounded-xl shadow">
+                    <div class="text-indigo-400 text-2xl mb-2">🛡️</div>
+                    <h3 class="font-bold text-white mb-1">Moderación</h3>
+                    <p class="text-xs text-gray-400">Herramientas esenciales para mantener tu servidor seguro, ordenado y bajo control.</p>
+                </div>
+
+                <div class="bg-[#2b2d31] border border-[#1f2023] p-5 rounded-xl shadow">
+                    <div class="text-indigo-400 text-2xl mb-2">🎉</div>
+                    <h3 class="font-bold text-white mb-1">Diversión</h3>
+                    <p class="text-xs text-gray-400">Minijuegos, interacción y comandos dinámicos para mantener activa a tu comunidad.</p>
+                </div>
+
+                <div class="bg-[#2b2d31] border border-[#1f2023] p-5 rounded-xl shadow">
+                    <div class="text-indigo-400 text-2xl mb-2">📜</div>
+                    <h3 class="font-bold text-white mb-1">Logs</h3>
+                    <p class="text-xs text-gray-400">Registro detallado de los movimientos importantes y actividades de la economía.</p>
+                </div>
+
+                <div class="bg-[#2b2d31] border border-[#1f2023] p-5 rounded-xl shadow">
+                    <div class="text-indigo-400 text-2xl mb-2">⚙️</div>
+                    <h3 class="font-bold text-white mb-1">Utilidades</h3>
+                    <p class="text-xs text-gray-400">Comandos y herramientas útiles que facilitan la gestión diaria del servidor.</p>
+                </div>
+
+                <div class="bg-[#2b2d31] border border-[#1f2023] p-5 rounded-xl shadow">
+                    <div class="text-indigo-400 text-2xl mb-2">🪙</div>
+                    <h3 class="font-bold text-white mb-1">Economía Global</h3>
+                    <p class="text-xs text-gray-400">Comercia, vende tus recursos y protege tus riquezas en la tienda global.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: COMANDOS ESENCIALES -->
+        <section id="commands" class="w-full mb-16">
+            <h2 class="text-2xl font-bold text-center mb-8 text-white">📖 Comandos Esenciales</h2>
+            <div class="bg-[#2b2d31] border border-[#1f2023] rounded-2xl p-6 shadow-xl max-w-2xl mx-auto divide-y divide-[#3f4147]">
+                
+                <div class="py-3 flex justify-between items-center">
+                    <span class="font-mono text-indigo-400 bg-[#1e1f22] px-2.5 py-1 rounded">!daily</span>
+                    <span class="text-sm text-gray-300">Reclama tu recompensa diaria de monedas.</span>
+                </div>
+
+                <div class="py-3 flex justify-between items-center">
+                    <span class="font-mono text-indigo-400 bg-[#1e1f22] px-2.5 py-1 rounded">!work</span>
+                    <span class="text-sm text-gray-300">Trabaja para ganar un ingreso extra inicial.</span>
+                </div>
+
+                <div class="py-3 flex justify-between items-center">
+                    <span class="font-mono text-indigo-400 bg-[#1e1f22] px-2.5 py-1 rounded">!balance</span>
+                    <span class="text-sm text-gray-300">Revisa tu saldo actual de dinero y riquezas.</span>
+                </div>
+
+                <div class="py-3 flex justify-between items-center">
+                    <span class="font-mono text-indigo-400 bg-[#1e1f22] px-2.5 py-1 rounded">!mine</span>
+                    <span class="text-sm text-gray-300">Explora las zonas de minería en busca de minerales.</span>
+                </div>
+
+                <div class="py-3 flex justify-between items-center">
+                    <span class="font-mono text-indigo-400 bg-[#1e1f22] px-2.5 py-1 rounded">!fish</span>
+                    <span class="text-sm text-gray-300">Lanza tu caña para pescar y conseguir tesoros.</span>
+                </div>
+
+                <div class="py-3 flex justify-between items-center">
+                    <span class="font-mono text-indigo-400 bg-[#1e1f22] px-2.5 py-1 rounded">!craft</span>
+                    <span class="text-sm text-gray-300">Forja nuevas herramientas con los materiales recolectados.</span>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: PREGUNTAS FRECUENTES (FAQ) -->
+        <section id="faq" class="w-full max-w-2xl mx-auto mb-8">
+            <h2 class="text-2xl font-bold text-center mb-8 text-white">❓ Preguntas Frecuentes</h2>
+            <div class="space-y-4">
+                
+                <div class="bg-[#2b2d31] border border-[#1f2023] p-5 rounded-xl shadow">
+                    <h3 class="font-bold text-white mb-2">¿Cómo consigo un saldo inicial para empezar?</h3>
+                    <p class="text-sm text-gray-400">Puedes ejecutar los comandos <code class="text-indigo-400 font-mono">!daily</code> y <code class="text-indigo-400 font-mono">!work</code> para obtener tus primeras monedas. Después, puedes seguir minando, pescando y vendiendo ítems para hacer crecer tu fortuna.</p>
+                </div>
+
+                <div class="bg-[#2b2d31] border border-[#1f2023] p-5 rounded-xl shadow">
+                    <h3 class="font-bold text-white mb-2">¿Cómo reporto un error o sugiero mejoras?</h3>
+                    <p class="text-sm text-gray-400">Si encuentras algún error o tienes una idea genial para Kuroya, puedes unirte al <a href="https://discord.gg/2ZSfANRc4w" target="_blank" class="text-indigo-400 hover:underline font-medium">servidor de soporte oficial de Discord</a> para reportarlo directamente.</p>
+                </div>
+
+            </div>
+        </section>
+
     </main>
 
-    <footer class="bg-[#2b2d31] border-t border-[#1f2023] py-4 text-center text-xs text-gray-500">
-        Kuroya Bot © 2026 - Todos los derechos reservados. Diseñado para economía global en Discord.
+    <!-- Pie de Página -->
+    <footer class="bg-[#2b2d31] border-t border-[#1f2023] py-6 text-center text-xs text-gray-500">
+        <p class="mb-2">Kuroya Bot © 2026 - Todos los derechos reservados. Diseñado para economía global en Discord.</p>
+        <a href="https://discord.gg/2ZSfANRc4w" target="_blank" class="text-indigo-400 hover:underline">Servidor de Soporte</a>
     </footer>
 
 </body>
