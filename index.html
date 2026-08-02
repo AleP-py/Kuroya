@@ -1,28 +1,74 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kuroya - Bot de Economía y RPG</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Estilo para el fondo estelar y degradado morado/negro */
+        body {
+            background: linear-gradient(to bottom, #0b0914, #1a102f, #313338);
+            background-attachment: fixed;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Capa de estrellas simuladas con sombras múltiples */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 90px 40px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 160px 120px, rgba(216,180,254,0.8), rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 230px 180px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 350px 250px, rgba(168,85,247,0.7), rgba(0,0,0,0)),
+                radial-gradient(1.5px 1.5px at 450px 80px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 550px 300px, rgba(255,255,255,0.9), rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 500px 500px;
+            opacity: 0.4;
+            z-index: -1;
+        }
+    </style>
+    <script>
+        // Función para mostrar la categoría de comandos seleccionada al hacer clic en una tarjeta
+        function showCategory(categoryId) {
+            const categories = document.querySelectorAll('.command-category');
+            categories.forEach(cat => cat.classList.add('hidden'));
+
+            const target = document.getElementById(categoryId);
+            if (target) {
+                target.classList.remove('hidden');
+                target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+    </script>
 </head>
-<body class="bg-[#313338] text-gray-100 font-sans min-h-screen flex flex-col justify-between">
+<body class="text-gray-100 font-sans min-h-screen flex flex-col justify-between">
+
+    <!-- Capa de Estrellas de Fondo -->
+    <div class="stars"></div>
 
     <!-- Barra de Navegación -->
-    <header class="bg-[#2b2d31] border-b border-[#1f2023] px-6 py-4 flex justify-between items-center shadow-md sticky top-0 z-50">
-        <div class="flex items-center space-x-3">
-            <div class="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center font-bold text-xl shadow">
-                K
-            </div>
-            <span class="text-xl font-bold tracking-wide text-white">Kuroya Bot</span>
-        </div>
+    <header class="bg-[#181525]/80 backdrop-blur-md border-b border-[#2d244a] px-6 py-4 flex justify-between items-center shadow-md sticky top-0 z-50">
+        <a href="#" class="flex items-center space-x-3 group">
+            <img src="https://i.imgur.com/uK0g6DX.jpeg" alt="Kuroya Logo" class="w-10 h-10 rounded-full object-cover shadow border border-indigo-500">
+            <span class="text-xl font-bold tracking-wide text-white group-hover:text-indigo-400 transition">Kuroya</span>
+        </a>
         <nav class="flex items-center space-x-6">
             <a href="#features" class="hover:text-indigo-400 font-medium text-sm transition hidden sm:inline">Características</a>
             <a href="#commands" class="hover:text-indigo-400 font-medium text-sm transition hidden sm:inline">Comandos</a>
             <a href="#faq" class="hover:text-indigo-400 font-medium text-sm transition hidden sm:inline">FAQ</a>
             <a href="https://discord.com/oauth2/authorize?client_id=1531521187447050240&permissions=8&integration_type=0&scope=bot" target="_blank" 
-               class="bg-[#5865F2] hover:bg-[#4752C4] text-white px-4 py-2 rounded-lg font-medium text-sm transition duration-200 flex items-center gap-2">
+               class="bg-[#5865F2] hover:bg-[#4752C4] text-white px-4 py-2 rounded-lg font-medium text-sm transition duration-200 flex items-center gap-2 shadow-lg shadow-indigo-500/20">
                 <i class="fa-brands fa-discord"></i> Invitar Bot
             </a>
         </nav>
@@ -34,29 +80,29 @@
         <!-- SECCIÓN DE INICIO (Invitación de Discord) -->
         <section class="w-full max-w-xl text-center mb-16">
             <h1 class="text-3xl sm:text-4xl font-extrabold mb-2 text-white">¡Hola, aventurero! 👋</h1>
-            <p class="text-gray-400 mb-8 text-base sm:text-lg">Bienvenido al sistema global de economía, minería, pesca y crafteos.</p>
+            <p class="text-purple-200/80 mb-8 text-base sm:text-lg">Bienvenido al sistema global de economía, minería, pesca y crafteos.</p>
 
-            <div class="bg-[#2b2d31] border border-[#1f2023] rounded-2xl p-6 shadow-2xl text-left relative overflow-hidden mb-8">
-                <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">INVITACIÓN AL BOT DE DISCORD</p>
+            <div class="bg-[#1b172e]/90 border border-[#3b2d63] rounded-2xl p-6 shadow-2xl text-left relative overflow-hidden mb-8 backdrop-blur-sm">
+                <p class="text-xs font-semibold text-purple-300 uppercase tracking-widest mb-4">INVITACIÓN AL BOT DE DISCORD</p>
                 
                 <div class="flex items-center space-x-4 mb-6">
-                    <img src="https://i.imgur.com/uK0g6DX.jpeg" alt="Kuroya Avatar" class="w-20 h-20 rounded-2xl object-cover shadow-md border-2 border-indigo-500 flex-shrink-0">
+                    <img src="https://i.imgur.com/uK0g6DX.jpeg" alt="Kuroya Avatar" class="w-20 h-20 rounded-2xl object-cover shadow-md border-2 border-purple-500 flex-shrink-0">
                     <div>
                         <h2 class="text-2xl font-bold text-white flex items-center gap-2">
-                            Kuroya <span class="bg-indigo-600 text-xs px-2 py-0.5 rounded-full text-white font-normal">BOT OFICIAL</span>
+                            Kuroya <span class="bg-purple-600 text-xs px-2 py-0.5 rounded-full text-white font-normal">BOT OFICIAL</span>
                         </h2>
-                        <p class="text-sm text-gray-300 mt-1">
+                        <p class="text-sm text-purple-200/70 mt-1">
                             ⚔️ Explora 5 zonas de minería y pesca, forja herramientas legendarias, comercia en la tienda global y protege tus riquezas.
                         </p>
                     </div>
                 </div>
 
-                <div class="flex flex-wrap gap-4 text-sm text-gray-400 border-t border-[#3f4147] pt-4 mb-6">
+                <div class="flex flex-wrap gap-4 text-sm text-gray-300 border-t border-[#3b2d63] pt-4 mb-6">
                     <div class="flex items-center gap-2">
                         <span class="w-2 h-2 rounded-full bg-green-500"></span> Economía Global Activa
                     </div>
                     <div class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-indigo-400"></span> Sistema RPG & Crafteo
+                        <span class="w-2 h-2 rounded-full bg-purple-400"></span> Sistema RPG & Crafteo
                     </div>
                 </div>
 
@@ -67,98 +113,176 @@
             </div>
         </section>
 
-        <!-- SECCIÓN 1: CARACTERÍSTICAS PRINCIPALES -->
+        <!-- SECCIÓN 1: CARACTERÍSTICAS PRINCIPALES (Botones Interactivos) -->
         <section id="features" class="w-full mb-16">
-            <h2 class="text-2xl font-bold text-center mb-8 text-white">✨ Características Principales</h2>
+            <h2 class="text-2xl font-bold text-center mb-3 text-white">✨ Características Principales</h2>
+            <p class="text-center text-sm text-purple-200/70 mb-8">Haz clic en cualquier tarjeta para ver los comandos específicos de esa categoría.</p>
+            
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 
-                <div class="bg-[#2b2d31] border border-[#1f2023] p-5 rounded-xl shadow">
-                    <div class="text-indigo-400 text-2xl mb-2">⛏️🐟</div>
+                <button onclick="showCategory('cat-mine')" class="bg-[#1b172e]/80 hover:bg-[#261f40] border border-[#3b2d63] hover:border-purple-400 p-5 rounded-xl shadow text-left transition duration-200 group backdrop-blur-sm">
+                    <div class="text-purple-400 text-2xl mb-2 group-hover:scale-110 transition transform">⛏️🐟</div>
                     <h3 class="font-bold text-white mb-1">Minería y Pesca</h3>
-                    <p class="text-xs text-gray-400">Explora 5 zonas diferentes para recolectar materiales raros y peces exóticos.</p>
-                </div>
+                    <p class="text-xs text-purple-200/60">5 zonas para recolectar materiales y peces exóticos.</p>
+                </button>
 
-                <div class="bg-[#2b2d31] border border-[#1f2023] p-5 rounded-xl shadow">
-                    <div class="text-indigo-400 text-2xl mb-2">🔨</div>
+                <button onclick="showCategory('cat-craft')" class="bg-[#1b172e]/80 hover:bg-[#261f40] border border-[#3b2d63] hover:border-purple-400 p-5 rounded-xl shadow text-left transition duration-200 group backdrop-blur-sm">
+                    <div class="text-purple-400 text-2xl mb-2 group-hover:scale-110 transition transform">🔨</div>
                     <h3 class="font-bold text-white mb-1">Crafteo</h3>
-                    <p class="text-xs text-gray-400">Forja y mejora tus herramientas (picos y cañas) para conseguir recompensas superiores.</p>
-                </div>
+                    <p class="text-xs text-purple-200/60">Forja y mejora picos y cañas legendarias.</p>
+                </button>
 
-                <div class="bg-[#2b2d31] border border-[#1f2023] p-5 rounded-xl shadow">
-                    <div class="text-indigo-400 text-2xl mb-2">🐾</div>
+                <button onclick="showCategory('cat-pets')" class="bg-[#1b172e]/80 hover:bg-[#261f40] border border-[#3b2d63] hover:border-purple-400 p-5 rounded-xl shadow text-left transition duration-200 group backdrop-blur-sm">
+                    <div class="text-purple-400 text-2xl mb-2 group-hover:scale-110 transition transform">🐾</div>
                     <h3 class="font-bold text-white mb-1">Mascotas</h3>
-                    <p class="text-xs text-gray-400">Adopta, cuida y acompaña tu aventura con un sistema dinámico de mascotas.</p>
-                </div>
+                    <p class="text-xs text-purple-200/60">Adopta y acompaña tu aventura con mascotas.</p>
+                </button>
 
-                <div class="bg-[#2b2d31] border border-[#1f2023] p-5 rounded-xl shadow">
-                    <div class="text-indigo-400 text-2xl mb-2">🛡️</div>
+                <button onclick="showCategory('cat-mod')" class="bg-[#1b172e]/80 hover:bg-[#261f40] border border-[#3b2d63] hover:border-purple-400 p-5 rounded-xl shadow text-left transition duration-200 group backdrop-blur-sm">
+                    <div class="text-purple-400 text-2xl mb-2 group-hover:scale-110 transition transform">🛡️</div>
                     <h3 class="font-bold text-white mb-1">Moderación</h3>
-                    <p class="text-xs text-gray-400">Herramientas esenciales para mantener tu servidor seguro, ordenado y bajo control.</p>
-                </div>
+                    <p class="text-xs text-purple-200/60">Herramientas para mantener seguro tu servidor.</p>
+                </button>
 
-                <div class="bg-[#2b2d31] border border-[#1f2023] p-5 rounded-xl shadow">
-                    <div class="text-indigo-400 text-2xl mb-2">🎉</div>
+                <button onclick="showCategory('cat-fun')" class="bg-[#1b172e]/80 hover:bg-[#261f40] border border-[#3b2d63] hover:border-purple-400 p-5 rounded-xl shadow text-left transition duration-200 group backdrop-blur-sm">
+                    <div class="text-purple-400 text-2xl mb-2 group-hover:scale-110 transition transform">🎉</div>
                     <h3 class="font-bold text-white mb-1">Diversión</h3>
-                    <p class="text-xs text-gray-400">Minijuegos, interacción y comandos dinámicos para mantener activa a tu comunidad.</p>
-                </div>
+                    <p class="text-xs text-purple-200/60">Minijuegos y comandos dinámicos para todos.</p>
+                </button>
 
-                <div class="bg-[#2b2d31] border border-[#1f2023] p-5 rounded-xl shadow">
-                    <div class="text-indigo-400 text-2xl mb-2">📜</div>
+                <button onclick="showCategory('cat-logs')" class="bg-[#1b172e]/80 hover:bg-[#261f40] border border-[#3b2d63] hover:border-purple-400 p-5 rounded-xl shadow text-left transition duration-200 group backdrop-blur-sm">
+                    <div class="text-purple-400 text-2xl mb-2 group-hover:scale-110 transition transform">📜</div>
                     <h3 class="font-bold text-white mb-1">Logs</h3>
-                    <p class="text-xs text-gray-400">Registro detallado de los movimientos importantes y actividades de la economía.</p>
-                </div>
+                    <p class="text-xs text-purple-200/60">Registro detallado de transacciones y actividad.</p>
+                </button>
 
-                <div class="bg-[#2b2d31] border border-[#1f2023] p-5 rounded-xl shadow">
-                    <div class="text-indigo-400 text-2xl mb-2">⚙️</div>
+                <button onclick="showCategory('cat-utils')" class="bg-[#1b172e]/80 hover:bg-[#261f40] border border-[#3b2d63] hover:border-purple-400 p-5 rounded-xl shadow text-left transition duration-200 group backdrop-blur-sm">
+                    <div class="text-purple-400 text-2xl mb-2 group-hover:scale-110 transition transform">⚙️</div>
                     <h3 class="font-bold text-white mb-1">Utilidades</h3>
-                    <p class="text-xs text-gray-400">Comandos y herramientas útiles que facilitan la gestión diaria del servidor.</p>
-                </div>
+                    <p class="text-xs text-purple-200/60">Comandos útiles para la gestión diaria.</p>
+                </button>
 
-                <div class="bg-[#2b2d31] border border-[#1f2023] p-5 rounded-xl shadow">
-                    <div class="text-indigo-400 text-2xl mb-2">🪙</div>
+                <button onclick="showCategory('cat-eco')" class="bg-[#1b172e]/80 hover:bg-[#261f40] border border-[#3b2d63] hover:border-purple-400 p-5 rounded-xl shadow text-left transition duration-200 group backdrop-blur-sm">
+                    <div class="text-purple-400 text-2xl mb-2 group-hover:scale-110 transition transform">🪙</div>
                     <h3 class="font-bold text-white mb-1">Economía Global</h3>
-                    <p class="text-xs text-gray-400">Comercia, vende tus recursos y protege tus riquezas en la tienda global.</p>
-                </div>
+                    <p class="text-xs text-purple-200/60">Comercia y protege tus riquezas.</p>
+                </button>
 
             </div>
         </section>
 
-        <!-- SECCIÓN 2: COMANDOS ESENCIALES -->
+        <!-- SECCIÓN 2: COMANDOS DETALLADOS POR CATEGORÍA -->
         <section id="commands" class="w-full mb-16">
-            <h2 class="text-2xl font-bold text-center mb-8 text-white">📖 Comandos Esenciales</h2>
-            <div class="bg-[#2b2d31] border border-[#1f2023] rounded-2xl p-6 shadow-xl max-w-2xl mx-auto divide-y divide-[#3f4147]">
-                
-                <div class="py-3 flex justify-between items-center">
-                    <span class="font-mono text-indigo-400 bg-[#1e1f22] px-2.5 py-1 rounded">!daily</span>
-                    <span class="text-sm text-gray-300">Reclama tu recompensa diaria de monedas.</span>
+            <h2 class="text-2xl font-bold text-center mb-8 text-white">📖 Guía de Comandos</h2>
+            
+            <!-- 1. Minería y Pesca -->
+            <div id="cat-mine" class="command-category bg-[#1b172e]/90 border border-[#3b2d63] rounded-2xl p-6 shadow-xl max-w-2xl mx-auto backdrop-blur-sm">
+                <h3 class="text-lg font-bold text-purple-300 mb-4 flex items-center gap-2">⛏️ Comandos de Minería y Pesca</h3>
+                <div class="divide-y divide-[#3b2d63]">
+                    <div class="py-3 flex justify-between items-center">
+                        <span class="font-mono text-purple-300 bg-[#120f21] px-2.5 py-1 rounded">!mine</span>
+                        <span class="text-sm text-purple-200/80">Explora una de las 5 zonas de minería.</span>
+                    </div>
+                    <div class="py-3 flex justify-between items-center">
+                        <span class="font-mono text-purple-300 bg-[#120f21] px-2.5 py-1 rounded">!fish</span>
+                        <span class="text-sm text-purple-200/80">Lanza tu caña para pescar recursos especiales.</span>
+                    </div>
                 </div>
-
-                <div class="py-3 flex justify-between items-center">
-                    <span class="font-mono text-indigo-400 bg-[#1e1f22] px-2.5 py-1 rounded">!work</span>
-                    <span class="text-sm text-gray-300">Trabaja para ganar un ingreso extra inicial.</span>
-                </div>
-
-                <div class="py-3 flex justify-between items-center">
-                    <span class="font-mono text-indigo-400 bg-[#1e1f22] px-2.5 py-1 rounded">!balance</span>
-                    <span class="text-sm text-gray-300">Revisa tu saldo actual de dinero y riquezas.</span>
-                </div>
-
-                <div class="py-3 flex justify-between items-center">
-                    <span class="font-mono text-indigo-400 bg-[#1e1f22] px-2.5 py-1 rounded">!mine</span>
-                    <span class="text-sm text-gray-300">Explora las zonas de minería en busca de minerales.</span>
-                </div>
-
-                <div class="py-3 flex justify-between items-center">
-                    <span class="font-mono text-indigo-400 bg-[#1e1f22] px-2.5 py-1 rounded">!fish</span>
-                    <span class="text-sm text-gray-300">Lanza tu caña para pescar y conseguir tesoros.</span>
-                </div>
-
-                <div class="py-3 flex justify-between items-center">
-                    <span class="font-mono text-indigo-400 bg-[#1e1f22] px-2.5 py-1 rounded">!craft</span>
-                    <span class="text-sm text-gray-300">Forja nuevas herramientas con los materiales recolectados.</span>
-                </div>
-
             </div>
+
+            <!-- 2. Crafteo -->
+            <div id="cat-craft" class="command-category bg-[#1b172e]/90 border border-[#3b2d63] rounded-2xl p-6 shadow-xl max-w-2xl mx-auto hidden backdrop-blur-sm">
+                <h3 class="text-lg font-bold text-purple-300 mb-4 flex items-center gap-2">🔨 Comandos de Crafteo</h3>
+                <div class="divide-y divide-[#3b2d63]">
+                    <div class="py-3 flex justify-between items-center">
+                        <span class="font-mono text-purple-300 bg-[#120f21] px-2.5 py-1 rounded">!craft</span>
+                        <span class="text-sm text-purple-200/80">Forja herramientas avanzadas con materiales.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Mascotas -->
+            <div id="cat-pets" class="command-category bg-[#1b172e]/90 border border-[#3b2d63] rounded-2xl p-6 shadow-xl max-w-2xl mx-auto hidden backdrop-blur-sm">
+                <h3 class="text-lg font-bold text-purple-300 mb-4 flex items-center gap-2">🐾 Comandos de Mascotas</h3>
+                <div class="divide-y divide-[#3b2d63]">
+                    <div class="py-3 flex justify-between items-center">
+                        <span class="font-mono text-purple-300 bg-[#120f21] px-2.5 py-1 rounded">!pet adopt</span>
+                        <span class="text-sm text-purple-200/80">Adopta una nueva mascota para tu aventura.</span>
+                    </div>
+                    <div class="py-3 flex justify-between items-center">
+                        <span class="font-mono text-purple-300 bg-[#120f21] px-2.5 py-1 rounded">!pet feed</span>
+                        <span class="text-sm text-purple-200/80">Alimenta y cuida el estado de tu mascota.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Moderación -->
+            <div id="cat-mod" class="command-category bg-[#1b172e]/90 border border-[#3b2d63] rounded-2xl p-6 shadow-xl max-w-2xl mx-auto hidden backdrop-blur-sm">
+                <h3 class="text-lg font-bold text-purple-300 mb-4 flex items-center gap-2">🛡️ Comandos de Moderación</h3>
+                <div class="divide-y divide-[#3b2d63]">
+                    <div class="py-3 flex justify-between items-center">
+                        <span class="font-mono text-purple-300 bg-[#120f21] px-2.5 py-1 rounded">!ban</span>
+                        <span class="text-sm text-purple-200/80">Expulsa permanentemente a un usuario problemático.</span>
+                    </div>
+                    <div class="py-3 flex justify-between items-center">
+                        <span class="font-mono text-purple-300 bg-[#120f21] px-2.5 py-1 rounded">!kick</span>
+                        <span class="text-sm text-purple-200/80">Saca a un usuario del servidor temporalmente.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Diversión -->
+            <div id="cat-fun" class="command-category bg-[#1b172e]/90 border border-[#3b2d63] rounded-2xl p-6 shadow-xl max-w-2xl mx-auto hidden backdrop-blur-sm">
+                <h3 class="text-lg font-bold text-purple-300 mb-4 flex items-center gap-2">🎉 Comandos de Diversión</h3>
+                <div class="divide-y divide-[#3b2d63]">
+                    <div class="py-3 flex justify-between items-center">
+                        <span class="font-mono text-purple-300 bg-[#120f21] px-2.5 py-1 rounded">!roll</span>
+                        <span class="text-sm text-purple-200/80">Lanza dados y pon a prueba tu suerte.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. Logs -->
+            <div id="cat-logs" class="command-category bg-[#1b172e]/90 border border-[#3b2d63] rounded-2xl p-6 shadow-xl max-w-2xl mx-auto hidden backdrop-blur-sm">
+                <h3 class="text-lg font-bold text-purple-300 mb-4 flex items-center gap-2">📜 Comandos de Logs</h3>
+                <div class="divide-y divide-[#3b2d63]">
+                    <div class="py-3 flex justify-between items-center">
+                        <span class="font-mono text-purple-300 bg-[#120f21] px-2.5 py-1 rounded">!setlogs</span>
+                        <span class="text-sm text-purple-200/80">Establece el canal para los registros del bot.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. Utilidades -->
+            <div id="cat-utils" class="command-category bg-[#1b172e]/90 border border-[#3b2d63] rounded-2xl p-6 shadow-xl max-w-2xl mx-auto hidden backdrop-blur-sm">
+                <h3 class="text-lg font-bold text-purple-300 mb-4 flex items-center gap-2">⚙️ Comandos de Utilidades</h3>
+                <div class="divide-y divide-[#3b2d63]">
+                    <div class="py-3 flex justify-between items-center">
+                        <span class="font-mono text-purple-300 bg-[#120f21] px-2.5 py-1 rounded">!ping</span>
+                        <span class="text-sm text-purple-200/80">Muestra la latencia actual del bot.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 8. Economía Global -->
+            <div id="cat-eco" class="command-category bg-[#1b172e]/90 border border-[#3b2d63] rounded-2xl p-6 shadow-xl max-w-2xl mx-auto backdrop-blur-sm">
+                <h3 class="text-lg font-bold text-purple-300 mb-4 flex items-center gap-2">🪙 Comandos de Economía Global</h3>
+                <div class="divide-y divide-[#3b2d63]">
+                    <div class="py-3 flex justify-between items-center">
+                        <span class="font-mono text-purple-300 bg-[#120f21] px-2.5 py-1 rounded">!daily</span>
+                        <span class="text-sm text-purple-200/80">Reclama tu recompensa diaria de monedas.</span>
+                    </div>
+                    <div class="py-3 flex justify-between items-center">
+                        <span class="font-mono text-purple-300 bg-[#120f21] px-2.5 py-1 rounded">!work</span>
+                        <span class="text-sm text-purple-200/80">Trabaja para ganar un ingreso extra inicial.</span>
+                    </div>
+                    <div class="py-3 flex justify-between items-center">
+                        <span class="font-mono text-purple-300 bg-[#120f21] px-2.5 py-1 rounded">!balance</span>
+                        <span class="text-sm text-purple-200/80">Revisa tu saldo actual de dinero y riquezas.</span>
+                    </div>
+                </div>
+            </div>
+
         </section>
 
         <!-- SECCIÓN 3: PREGUNTAS FRECUENTES (FAQ) -->
@@ -166,14 +290,14 @@
             <h2 class="text-2xl font-bold text-center mb-8 text-white">❓ Preguntas Frecuentes</h2>
             <div class="space-y-4">
                 
-                <div class="bg-[#2b2d31] border border-[#1f2023] p-5 rounded-xl shadow">
+                <div class="bg-[#1b172e]/90 border border-[#3b2d63] p-5 rounded-xl shadow backdrop-blur-sm">
                     <h3 class="font-bold text-white mb-2">¿Cómo consigo un saldo inicial para empezar?</h3>
-                    <p class="text-sm text-gray-400">Puedes ejecutar los comandos <code class="text-indigo-400 font-mono">!daily</code> y <code class="text-indigo-400 font-mono">!work</code> para obtener tus primeras monedas. Después, puedes seguir minando, pescando y vendiendo ítems para hacer crecer tu fortuna.</p>
+                    <p class="text-sm text-purple-200/80">Puedes ejecutar los comandos <code class="text-purple-300 font-mono">!daily</code> y <code class="text-purple-300 font-mono">!work</code> para obtener tus primeras monedas. Después, puedes seguir minando, pescando y vendiendo ítems para hacer crecer tu fortuna.</p>
                 </div>
 
-                <div class="bg-[#2b2d31] border border-[#1f2023] p-5 rounded-xl shadow">
+                <div class="bg-[#1b172e]/90 border border-[#3b2d63] p-5 rounded-xl shadow backdrop-blur-sm">
                     <h3 class="font-bold text-white mb-2">¿Cómo reporto un error o sugiero mejoras?</h3>
-                    <p class="text-sm text-gray-400">Si encuentras algún error o tienes una idea genial para Kuroya, puedes unirte al <a href="https://discord.gg/2ZSfANRc4w" target="_blank" class="text-indigo-400 hover:underline font-medium">servidor de soporte oficial de Discord</a> para reportarlo directamente.</p>
+                    <p class="text-sm text-purple-200/80">Si encuentras algún error o tienes una idea genial para Kuroya, puedes unirte al <a href="https://discord.gg/2ZSfANRc4w" target="_blank" class="text-purple-300 hover:underline font-medium">servidor de soporte oficial de Discord</a> para reportarlo directamente.</p>
                 </div>
 
             </div>
@@ -182,9 +306,9 @@
     </main>
 
     <!-- Pie de Página -->
-    <footer class="bg-[#2b2d31] border-t border-[#1f2023] py-6 text-center text-xs text-gray-500">
+    <footer class="bg-[#181525]/90 border-t border-[#2d244a] py-6 text-center text-xs text-purple-200/60 backdrop-blur-md">
         <p class="mb-2">Kuroya Bot © 2026 - Todos los derechos reservados. Diseñado para economía global en Discord.</p>
-        <a href="https://discord.gg/2ZSfANRc4w" target="_blank" class="text-indigo-400 hover:underline">Servidor de Soporte</a>
+        <a href="https://discord.gg/2ZSfANRc4w" target="_blank" class="text-purple-300 hover:underline">Servidor de Soporte</a>
     </footer>
 
 </body>
