@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es" class="scroll-smooth bg-[#0b0914]">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,17 +7,25 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Estilo para el fondo estelar y degradado morado/negro */
-        body {
-            background: linear-gradient(to bottom, #0b0914, #1a102f, #313338);
-            background-attachment: fixed;
-            position: relative;
-            overflow-x: hidden;
+        /* Fondo estelar blindado para celulares y PC */
+        html, body {
+            background-color: #0b0914 !important;
+            color: #f3f4f6 !important;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
         }
 
-        /* Capa de estrellas simuladas con sombras múltiples */
+        body {
+            background-image: linear-gradient(to bottom, #0b0914, #1a102f, #313338);
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+
+        /* Capa de estrellas optimizada para móviles */
         .stars {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
@@ -33,9 +41,15 @@
                 radial-gradient(1.5px 1.5px at 450px 80px, #ffffff, rgba(0,0,0,0)),
                 radial-gradient(2px 2px at 550px 300px, rgba(255,255,255,0.9), rgba(0,0,0,0));
             background-repeat: repeat;
-            background-size: 500px 500px;
+            background-size: 400px 400px;
             opacity: 0.4;
-            z-index: -1;
+            z-index: 1;
+        }
+
+        /* Asegurar que el contenido esté por encima de las estrellas */
+        header, main, footer {
+            position: relative;
+            z-index: 2;
         }
     </style>
     <script>
@@ -52,13 +66,11 @@
         }
     </script>
 </head>
-<body class="text-gray-100 font-sans min-h-screen flex flex-col justify-between">
+<body class="font-sans min-h-screen flex flex-col justify-between">
 
-    <!-- Capa de Estrellas de Fondo -->
     <div class="stars"></div>
 
-    <!-- Barra de Navegación -->
-    <header class="bg-[#181525]/80 backdrop-blur-md border-b border-[#2d244a] px-6 py-4 flex justify-between items-center shadow-md sticky top-0 z-50">
+    <header class="bg-[#181525]/90 backdrop-blur-md border-b border-[#2d244a] px-6 py-4 flex justify-between items-center shadow-md sticky top-0 z-50">
         <a href="#" class="flex items-center space-x-3 group">
             <img src="https://i.imgur.com/uK0g6DX.jpeg" alt="Kuroya Logo" class="w-10 h-10 rounded-full object-cover shadow border border-indigo-500">
             <span class="text-xl font-bold tracking-wide text-white group-hover:text-indigo-400 transition">Kuroya</span>
@@ -74,10 +86,8 @@
         </nav>
     </header>
 
-    <!-- Contenido Principal -->
     <main class="flex-grow flex flex-col items-center justify-center px-4 py-12 max-w-5xl mx-auto w-full">
 
-        <!-- SECCIÓN DE INICIO (Invitación de Discord) -->
         <section class="w-full max-w-xl text-center mb-16">
             <h1 class="text-3xl sm:text-4xl font-extrabold mb-2 text-white">¡Hola, aventurero! 👋</h1>
             <p class="text-purple-200/80 mb-8 text-base sm:text-lg">Bienvenido al sistema global de economía, minería, pesca y crafteos.</p>
@@ -113,7 +123,6 @@
             </div>
         </section>
 
-        <!-- SECCIÓN 1: CARACTERÍSTICAS PRINCIPALES (Botones Interactivos) -->
         <section id="features" class="w-full mb-16">
             <h2 class="text-2xl font-bold text-center mb-3 text-white">✨ Características Principales</h2>
             <p class="text-center text-sm text-purple-200/70 mb-8">Haz clic en cualquier tarjeta para ver los comandos específicos de esa categoría.</p>
@@ -171,11 +180,9 @@
             </div>
         </section>
 
-        <!-- SECCIÓN 2: COMANDOS DETALLADOS POR CATEGORÍA -->
         <section id="commands" class="w-full mb-16">
             <h2 class="text-2xl font-bold text-center mb-8 text-white">📖 Guía de Comandos</h2>
             
-            <!-- 1. Minería y Pesca -->
             <div id="cat-mine" class="command-category bg-[#1b172e]/90 border border-[#3b2d63] rounded-2xl p-6 shadow-xl max-w-2xl mx-auto backdrop-blur-sm">
                 <h3 class="text-lg font-bold text-purple-300 mb-4 flex items-center gap-2">⛏️ Comandos de Minería y Pesca</h3>
                 <div class="divide-y divide-[#3b2d63]">
@@ -190,7 +197,6 @@
                 </div>
             </div>
 
-            <!-- 2. Crafteo -->
             <div id="cat-craft" class="command-category bg-[#1b172e]/90 border border-[#3b2d63] rounded-2xl p-6 shadow-xl max-w-2xl mx-auto hidden backdrop-blur-sm">
                 <h3 class="text-lg font-bold text-purple-300 mb-4 flex items-center gap-2">🔨 Comandos de Crafteo</h3>
                 <div class="divide-y divide-[#3b2d63]">
@@ -201,7 +207,6 @@
                 </div>
             </div>
 
-            <!-- 3. Mascotas -->
             <div id="cat-pets" class="command-category bg-[#1b172e]/90 border border-[#3b2d63] rounded-2xl p-6 shadow-xl max-w-2xl mx-auto hidden backdrop-blur-sm">
                 <h3 class="text-lg font-bold text-purple-300 mb-4 flex items-center gap-2">🐾 Comandos de Mascotas</h3>
                 <div class="divide-y divide-[#3b2d63]">
@@ -216,7 +221,6 @@
                 </div>
             </div>
 
-            <!-- 4. Moderación -->
             <div id="cat-mod" class="command-category bg-[#1b172e]/90 border border-[#3b2d63] rounded-2xl p-6 shadow-xl max-w-2xl mx-auto hidden backdrop-blur-sm">
                 <h3 class="text-lg font-bold text-purple-300 mb-4 flex items-center gap-2">🛡️ Comandos de Moderación</h3>
                 <div class="divide-y divide-[#3b2d63]">
@@ -231,7 +235,6 @@
                 </div>
             </div>
 
-            <!-- 5. Diversión -->
             <div id="cat-fun" class="command-category bg-[#1b172e]/90 border border-[#3b2d63] rounded-2xl p-6 shadow-xl max-w-2xl mx-auto hidden backdrop-blur-sm">
                 <h3 class="text-lg font-bold text-purple-300 mb-4 flex items-center gap-2">🎉 Comandos de Diversión</h3>
                 <div class="divide-y divide-[#3b2d63]">
@@ -242,7 +245,6 @@
                 </div>
             </div>
 
-            <!-- 6. Logs -->
             <div id="cat-logs" class="command-category bg-[#1b172e]/90 border border-[#3b2d63] rounded-2xl p-6 shadow-xl max-w-2xl mx-auto hidden backdrop-blur-sm">
                 <h3 class="text-lg font-bold text-purple-300 mb-4 flex items-center gap-2">📜 Comandos de Logs</h3>
                 <div class="divide-y divide-[#3b2d63]">
@@ -253,7 +255,6 @@
                 </div>
             </div>
 
-            <!-- 7. Utilidades -->
             <div id="cat-utils" class="command-category bg-[#1b172e]/90 border border-[#3b2d63] rounded-2xl p-6 shadow-xl max-w-2xl mx-auto hidden backdrop-blur-sm">
                 <h3 class="text-lg font-bold text-purple-300 mb-4 flex items-center gap-2">⚙️ Comandos de Utilidades</h3>
                 <div class="divide-y divide-[#3b2d63]">
@@ -264,7 +265,6 @@
                 </div>
             </div>
 
-            <!-- 8. Economía Global -->
             <div id="cat-eco" class="command-category bg-[#1b172e]/90 border border-[#3b2d63] rounded-2xl p-6 shadow-xl max-w-2xl mx-auto backdrop-blur-sm">
                 <h3 class="text-lg font-bold text-purple-300 mb-4 flex items-center gap-2">🪙 Comandos de Economía Global</h3>
                 <div class="divide-y divide-[#3b2d63]">
@@ -285,7 +285,6 @@
 
         </section>
 
-        <!-- SECCIÓN 3: PREGUNTAS FRECUENTES (FAQ) -->
         <section id="faq" class="w-full max-w-2xl mx-auto mb-8">
             <h2 class="text-2xl font-bold text-center mb-8 text-white">❓ Preguntas Frecuentes</h2>
             <div class="space-y-4">
@@ -297,7 +296,7 @@
 
                 <div class="bg-[#1b172e]/90 border border-[#3b2d63] p-5 rounded-xl shadow backdrop-blur-sm">
                     <h3 class="font-bold text-white mb-2">¿Cómo reporto un error o sugiero mejoras?</h3>
-                    <p class="text-sm text-purple-200/80">Si encuentras algún error o tienes una idea genial para Kuroya, puedes unirte al <a href="https://discord.gg/2ZSfANRc4w" target="_blank" class="text-purple-300 hover:underline font-medium">servidor de soporte oficial de Discord</a> para reportarlo directamente.</p>
+                    <p class="text-sm text-purple-200/80">Jika encuentras algún error o tienes una idea genial para Kuroya, puedes unirte al <a href="https://discord.gg/2ZSfANRc4w" target="_blank" class="text-purple-300 hover:underline font-medium">servidor de soporte oficial de Discord</a> para reportarlo directamente.</p>
                 </div>
 
             </div>
@@ -305,7 +304,6 @@
 
     </main>
 
-    <!-- Pie de Página -->
     <footer class="bg-[#181525]/90 border-t border-[#2d244a] py-6 text-center text-xs text-purple-200/60 backdrop-blur-md">
         <p class="mb-2">Kuroya Bot © 2026 - Todos los derechos reservados. Diseñado para economía global en Discord.</p>
         <a href="https://discord.gg/2ZSfANRc4w" target="_blank" class="text-purple-300 hover:underline">Servidor de Soporte</a>
